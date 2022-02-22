@@ -30,10 +30,8 @@ public class ServletLogin extends HttpServlet {
 			redirecionar.forward(request, response);
 		}else {
 			doPost(request, response);
-		}
-		
-	}
-	
+		}		
+	}	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      
 		String login = request.getParameter("login");
