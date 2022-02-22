@@ -10,8 +10,12 @@ CREATE DATABASE "curso-jsp"
 
 CREATE TABLE public.model_login
 (
-  login character varying(200),
-  senha character varying(205),
+  login character varying(200) NOT NULL,
+  senha character varying(205) NOT NULL,
+  id integer NOT NULL DEFAULT nextval('model_login_id_seq'::regclass),
+  nome character varying(300) NOT NULL,
+  email character varying(300) NOT NULL,
+  CONSTRAINT model_login_pkey PRIMARY KEY (id),
   CONSTRAINT login_unique UNIQUE (login)
 )
 WITH (
@@ -25,3 +29,5 @@ ALTER TABLE public.model_login
   INSERT INTO public.model_login(
             login, senha)
     VALUES ('admin','admin');
+    
+    
