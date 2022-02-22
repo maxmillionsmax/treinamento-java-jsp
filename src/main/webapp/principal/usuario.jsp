@@ -86,6 +86,7 @@
 												</div>
 											</div>
 										</div>
+										<span>${msg}</span>
 
 
 
