@@ -35,8 +35,9 @@ public class SerletUsuarioController extends HttpServlet {
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		
-		RequestDispatcher redirecinar = request.getRequestDispatcher("principal/usuario.jsp");
-		redirecinar.forward(request, response);
+		request.setAttribute("modelLogin", modelLogin);
+
+		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		
 	}
 

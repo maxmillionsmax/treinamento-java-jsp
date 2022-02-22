@@ -47,29 +47,29 @@
 
 														<form class="form-material" method="post" action="<%= request.getContextPath()%>/SerletUsuarioController">
 															<div class="form-group form-default">
-																<input type="text" name="id" id="id"
+																<input type="text" name="id" id="id" value="${modelLogin.id}"
 																	class="form-control" required="" readonly="readonly">
 																<span class="form-bar"></span> <label
 																	class="float-label">ID:</label>
 															</div>
 															<div class="form-group form-default">
-																<input type="text" name="nome" id="nome" autocomplete="off"
+																<input type="text" name="nome" id="nome" autocomplete="off" value="${modelLogin.nome}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Nome:</label>
 															</div>
 															<div class="form-group form-default">
-																<input type="email" name="email" id="email" autocomplete="off"
+																<input type="email" name="email" id="email" autocomplete="off" value="${modelLogin.email}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Email:</label>
 															</div>
 															<div class="form-group form-default">
-																<input type="text" name="login" id="login"
+																<input type="text" name="login" id="login" value="${modelLogin.login}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">login:</label>
 															</div>
 															
 															<div class="form-group form-default">
-																<input type="password" name="senha" id="senha"
+																<input type="password" name="senha" id="senha" value="${modelLogin.senha}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">senha:</label>
 															</div>
