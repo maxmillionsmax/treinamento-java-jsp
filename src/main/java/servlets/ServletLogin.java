@@ -21,7 +21,17 @@ public class ServletLogin extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		
+		String acao = request.getParameter("acao");
+		
+		if (acao != null && acao.isEmpty() && acao.equalsIgnoreCase("logout")) {
+			request.getSession().invalidate();
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			redirecionar.forward(request, response);
+		}else {
+			doPost(request, response);
+		}
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,8 +63,7 @@ public class ServletLogin extends HttpServlet {
 					rediredcionar.forward(request, response);
 				}
 			}else {
-				RequestDispatcher rediredcionar = request.getRequestDispatcher("/index.jsp");
-				request.setAttribute("msg", "CAMPOS NÃO PODEM ESTAR VAZIOS");
+				RequestDispatcher rediredcionar = request.getRequestDispatcher("index.jsp");
 				rediredcionar.forward(request, response);
 				
 			}

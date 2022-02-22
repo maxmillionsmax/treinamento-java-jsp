@@ -56,7 +56,7 @@ public class FilterAutenticacao implements Filter {
 		   
 		   String urlParaAutenticar = req.getServletPath();
 		   
-		   if ((usuarioLogado == null || usuarioLogado.isEmpty()) && !urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")
+		   if (usuarioLogado == null && !urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")
 				   && !urlParaAutenticar.equalsIgnoreCase("/ServletLogin")){
 			   
 			   RequestDispatcher redireciona = request.getRequestDispatcher("/index.jsp?url="+urlParaAutenticar);
