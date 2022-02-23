@@ -45,36 +45,36 @@
 													<div class="card-block">
 														<h4 class="sub-title">Cadastro usuario</h4>
 
-														<form class="form-material" method="post" action="<%= request.getContextPath()%>/SerletUsuarioController">
-															<div class="form-group form-default">
+														<form class="form-material" method="post" action=" <%= request.getContextPath()%>/SerletUsuarioController" id="formUser">
+															<div class="form-group form-default form-static-label">
 																<input type="text" name="id" id="id" value="${modelLogin.id}"
 																	class="form-control" required="" readonly="readonly">
 																<span class="form-bar"></span> <label
 																	class="float-label">ID:</label>
 															</div>
-															<div class="form-group form-default">
+															<div class="form-group form-default form-static-label">
 																<input type="text" name="nome" id="nome" autocomplete="off" value="${modelLogin.nome}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Nome:</label>
 															</div>
-															<div class="form-group form-default">
+															<div class="form-group form-default form-static-label">
 																<input type="email" name="email" id="email" autocomplete="off" value="${modelLogin.email}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Email:</label>
 															</div>
-															<div class="form-group form-default">
+															<div class="form-group form-default form-static-label">
 																<input type="text" name="login" id="login" value="${modelLogin.login}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">login:</label>
 															</div>
 															
-															<div class="form-group form-default">
+															<div class="form-group form-default form-static-label">
 																<input type="password" name="senha" id="senha" value="${modelLogin.senha}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">senha:</label>
 															</div>
 															<div>
-															<button class="btn btn-primary waves-effect waves-light">novo</button>
+															<button class="btn btn-primary waves-effect waves-light" onclick="limparForm();">novo</button>
 															<button class="btn btn-success waves-effect waves-light">salvar</button>
 															<button class="btn btn-info waves-effect waves-light">excluir</button>
 															
@@ -104,7 +104,20 @@
 
 
 	                                                                                                                                                   <!-- Required Jquery -->
-	<jsp:include page="javascriptfile.jsp"></jsp:include>
+<jsp:include page="javascriptfile.jsp"></jsp:include>
+
+<script type="text/javascript">
+
+function limparForm() {
+    
+    var elementos = document.getElementById("formUser").elements; /*Retorna os elementos html dentro do form*/
+    
+    for (p = 0; p < elementos.length; p ++){
+	    elementos[p].value = '';
+    }
+}
+</script>
+	
 </body>
 
 </html>
