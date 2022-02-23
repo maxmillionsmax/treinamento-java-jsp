@@ -26,6 +26,9 @@ public class SerletUsuarioController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			
+		String msg = "Operação realizada com sucesso!";	
+			
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
@@ -39,9 +42,14 @@ public class SerletUsuarioController extends HttpServlet {
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		
-		modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
+		if (daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
+			msg = "Já existe usuario com este login, informe outro login";
+			
+		} else {
+			modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
+		}			
 		
-		request.setAttribute("msg","Gravado com sucesso");
+		request.setAttribute("msg",msg);
 		request.setAttribute("modelLogin", modelLogin);
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		
