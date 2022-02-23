@@ -36,6 +36,7 @@ public class SerletUsuarioController extends HttpServlet {
 		String senha = request.getParameter("senha");
 		
 		ModelLogin modelLogin = new ModelLogin();
+		
 		modelLogin.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
 		modelLogin.setNome(nome);
 		modelLogin.setEmail(email);
@@ -46,6 +47,11 @@ public class SerletUsuarioController extends HttpServlet {
 			msg = "Já existe usuario com este login, informe outro login";
 			
 		} else {
+			if (modelLogin.isNovo()) {
+				msg="Gravado com sucesso";
+			}else {
+				msg="Atualizado com sucesso";
+				}
 			modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
 		}			
 		
