@@ -39,7 +39,7 @@ public class SerletUsuarioController extends HttpServlet {
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		
-		daoUsuarioRepository.gravarUsuario(modelLogin);
+		modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
 		
 		request.setAttribute("msg","Gravado com sucesso");
 		request.setAttribute("modelLogin", modelLogin);
