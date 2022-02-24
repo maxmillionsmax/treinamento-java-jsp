@@ -83,14 +83,11 @@
 	</div>	
 	</form>
 
-
 	</div>
 	</div>
 	</div>
 	</div>
 	<span id="msg">${msg}</span>
-
-
 
 	</div>
 	<!-- Page-body end -->
@@ -119,16 +116,47 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+
+		<div class="input-group mb-3">
+		  <input type="text" class="form-control" id="nomeBusca" placeholder="Nome" aria-label="nome" aria-describedby="basic-addon2">
+		  <div class="input-group-append">
+		    <button class="btn btn-success" type="button" onclick="buscarUsuario();">Buscar</button>
+		  </div>
+		</div>  
+		
+		<table class="table table-dark">
+		  <thead>
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Nome:</th>
+		      <th scope="col">Ver</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    
+		  </tbody>
+		</table>    
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
+
+function buscarUsuario(){
+	
+	var nomeBusca= document.getElementById('nomeBusca').value;
+	
+	if(nomeBusca !=null && nomeBusca != '' && nomeBusca.trim()!=''){
+		alert(nomeBusca);
+	}
+}
+
+
 function criarDeleteComAjax(){
 	
 	if(confirm('Deseja excluir este registro ?')){
