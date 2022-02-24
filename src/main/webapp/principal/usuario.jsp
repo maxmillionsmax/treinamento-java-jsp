@@ -45,7 +45,7 @@
 										<div class="card-block">
 										<h4 class="sub-title">Cadastro usuario</h4>
 
-	<form class="form-material" method="post" action=" <%= request.getContextPath()%>/SerletUsuarioController" id="formUser">
+	<form class="form-material" method="post" action="<%= request.getContextPath()%>/SerletUsuarioController" id="formUser">
 							<input type="hidden" name="acao" id="acao" value ="">
 															
 							<div class="form-group form-default form-static-label">
@@ -78,7 +78,7 @@
 							<div>
 							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">novo</button>
 							<button type="submit" class="btn btn-success waves-effect waves-light">salvar</button>
-							<button type="button" class="btn btn-info waves-effect waves-light" onclick="criarDelete();">excluir</button>
+							<button type="button" class="btn btn-info waves-effect waves-light" onclick="criarDeleteComAjax();">excluir</button>
 															
 							</div>	
 							</form>
@@ -88,7 +88,7 @@
 							</div>
 							</div>
 							</div>
-							<span>${msg}</span>
+							<span id="msg">${msg}</span>
 
 
 
@@ -109,6 +109,29 @@
 <jsp:include page="javascriptfile.jsp"></jsp:include>
 
 <script type="text/javascript">
+function criarDeleteComAjax(){
+	
+	if(confirm('Deseja excluir este registro ?')){
+		
+	 var urlAction = document.getElementById("formUser").action;
+	 var idUser =  document.getElementById("id").value;
+		
+	 $.ajax({
+		method : "get",
+		url : urlAction,
+		data: "id="+idUser+"&acao=deletarajax",
+		success : function(response){
+			limparForm();
+			document.getElementById('msg').textContent = response;
+		}
+		 
+	 }).fail(function(xhr,status,errorThrown){
+		alert('Erro ao deletar usuario por id: '+xhr.responseText); 
+	 });
+	 	
+	}
+}
+
 function criarDelete() {
     if(confirm('Deseja excluir este registro ?')){
 	
