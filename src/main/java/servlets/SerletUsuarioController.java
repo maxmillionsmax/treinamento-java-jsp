@@ -42,7 +42,19 @@ public class SerletUsuarioController extends HttpServlet {
 				
 				response.getWriter().write("Excluido com sucesso!");
 								
-			}else {
+			}
+			else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjax")) {
+				
+				String nomeBusca = request.getParameter("nomeBusca");
+				
+				System.out.println(nomeBusca);
+				
+				//daoUsuarioRepository.deletarUser(idUser);
+				
+				//response.getWriter().write("Excluido com sucesso!");
+								
+			}
+			else {
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 			}				
 			
