@@ -39,54 +39,56 @@
 									<div class="page-body">
 
 										<div class="row">
-											<div class="col-sm-12">
+										<div class="col-sm-12">
 												<!-- Basic Form Inputs card start -->
-												<div class="card">
-													<div class="card-block">
-														<h4 class="sub-title">Cadastro usuario</h4>
+									<div class="card">
+										<div class="card-block">
+										<h4 class="sub-title">Cadastro usuario</h4>
 
-														<form class="form-material" method="post" action=" <%= request.getContextPath()%>/SerletUsuarioController" id="formUser">
-															<div class="form-group form-default form-static-label">
-																<input type="text" name="id" id="id" value="${modelLogin.id}"
-																	class="form-control" required="" readonly="readonly">
-																<span class="form-bar"></span> <label
-																	class="float-label">ID:</label>
-															</div>
-															<div class="form-group form-default form-static-label">
-																<input type="text" name="nome" id="nome" autocomplete="off" value="${modelLogin.nome}"
-																	class="form-control" required="required"> <span
-																	class="form-bar"></span> <label class="float-label">Nome:</label>
-															</div>
-															<div class="form-group form-default form-static-label">
-																<input type="email" name="email" id="email" autocomplete="off" value="${modelLogin.email}"
-																	class="form-control" required="required"> <span
-																	class="form-bar"></span> <label class="float-label">Email:</label>
-															</div>
-															<div class="form-group form-default form-static-label">
-																<input type="text" name="login" id="login" value="${modelLogin.login}"
-																	class="form-control" required="required"> <span
-																	class="form-bar"></span> <label class="float-label">login:</label>
-															</div>
+	<form class="form-material" method="post" action=" <%= request.getContextPath()%>/SerletUsuarioController" id="formUser">
+							<input type="hidden" name="acao" id="acao" value ="">
 															
-															<div class="form-group form-default form-static-label">
-																<input type="password" name="senha" id="senha" value="${modelLogin.senha}"
-																	class="form-control" required="required"> <span
-																	class="form-bar"></span> <label class="float-label">senha:</label>
-															</div>
-															<div>
-															<button class="btn btn-primary waves-effect waves-light" onclick="limparForm();">novo</button>
-															<button class="btn btn-success waves-effect waves-light">salvar</button>
-															<button class="btn btn-info waves-effect waves-light">excluir</button>
+							<div class="form-group form-default form-static-label">
+							<input type="text" name="id" id="id" value="${modelLogin.id}"
+							class="form-control" required="" readonly="readonly">
+							<span class="form-bar"></span> <label
+							class="float-label">ID:</label>
+							</div>
+							<div class="form-group form-default form-static-label">
+							<input type="text" name="nome" id="nome" autocomplete="off" value="${modelLogin.nome}"
+							class="form-control" required="required"> <span
+							class="form-bar"></span> <label class="float-label">Nome:</label>
+							</div>
+							<div class="form-group form-default form-static-label">
+							<input type="email" name="email" id="email" autocomplete="off" value="${modelLogin.email}"
+							class="form-control" required="required"> <span
+							class="form-bar"></span> <label class="float-label">Email:</label>
+							</div>
+							<div class="form-group form-default form-static-label">
+							<input type="text" name="login" id="login" value="${modelLogin.login}"
+							class="form-control" required="required"> <span
+							class="form-bar"></span> <label class="float-label">login:</label>
+							</div>
 															
-															</div>	
-														</form>
+							<div class="form-group form-default form-static-label">
+							<input type="password" name="senha" id="senha" value="${modelLogin.senha}"
+							class="form-control" required="required"> <span
+							class="form-bar"></span> <label class="float-label">senha:</label>
+							</div>
+							<div>
+							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">novo</button>
+							<button type="submit" class="btn btn-success waves-effect waves-light">salvar</button>
+							<button type="button" class="btn btn-info waves-effect waves-light" onclick="criarDelete();">excluir</button>
+															
+							</div>	
+							</form>
 
 
-													</div>
-												</div>
-											</div>
-										</div>
-										<span>${msg}</span>
+							</div>
+							</div>
+							</div>
+							</div>
+							<span>${msg}</span>
 
 
 
@@ -107,6 +109,16 @@
 <jsp:include page="javascriptfile.jsp"></jsp:include>
 
 <script type="text/javascript">
+function criarDelete() {
+    if(confirm('Deseja excluir este registro ?')){
+	
+    document.getElementById("formUser").method ='get'; /*Retorna os elementos html dentro do form*/
+    document.getElementById("acao").value = 'deletar';
+    document.getElementById("formUser").submit();
+    	
+    }
+    
+    }
 
 function limparForm() {
     
