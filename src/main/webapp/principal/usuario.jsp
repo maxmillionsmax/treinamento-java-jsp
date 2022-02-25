@@ -151,6 +151,14 @@
 
 <script type="text/javascript">
 
+function verEditar(id){
+
+	var urlAction = document.getElementById("formUser").action;
+	
+	window.location.href = urlAction +'?acao=buscarEditar&id='+id;
+	
+}
+
 function buscarUsuario(){
 	
 	var nomeBusca= document.getElementById('nomeBusca').value;
@@ -172,7 +180,7 @@ function buscarUsuario(){
 				for(var p = 0; p < json.length; p++){
 					$('#tabelaResultados > tbody').append('<tr><td>'+json[p].id+
 							'</td> <td>'+json[p].nome+
-							'</td> <td><button type="button" class="btn btn-info">Ver</button></td> </tr>')
+							'</td> <td><button onclick="verEditar('+json[p].id+')" type="button" class="btn btn-info">Ver</button></td> </tr>')
 				}
 				
 				document.getElementById('totalResultados').textContent = 'Resultados: '+json.length;
