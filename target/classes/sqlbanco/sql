@@ -31,3 +31,5 @@ ALTER TABLE public.model_login
     VALUES ('admin','admin');
     
     
+ alter table model_login add column useradmin boolean not null default false;   
+    
