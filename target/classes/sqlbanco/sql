@@ -30,6 +30,15 @@ ALTER TABLE public.model_login
             login, senha)
     VALUES ('admin','admin');
     
-    
- alter table model_login add column useradmin boolean not null default false;   
+----------------------------------------------------------------------------
+ alter table model_login add column useradmin boolean not null default false; 
+-----------------------------------------------------------------------------
+
+alter table model_login add column usuario_id bigint not null default 1;
+
+update model_login set usuario_id = 5 where id > 10;   
+
+-----------------------------------------------------------------------------
+ 
+ 
     
